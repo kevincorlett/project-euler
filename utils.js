@@ -1,12 +1,27 @@
-const primes = [2,3];
-function getPrimes(max){
+const _primes = [2,3];
+const _isPrime = _primes.reduce((p,c) => { p[c] = true; return p;}, {});
 
-    for(let i=primes[primes.length-1]+2;i<max;i+=2){
-        if (!primes.some(x => i % x === 0)){
-            primes.push(i);
+function getPrimes(max){
+    for(let i=_primes[_primes.length-1]+2;i<=max;i+=2){
+        if (_isPrime[i] = !_primes.some(x => i % x === 0)) {
+            _primes.push(i);
         }
     }
-    return new Array(...primes);
+    return new Array(..._primes);
 }
 
-module.exports = { getPrimes };
+function isPrime(p){
+    if (Object.hasOwn(_isPrime, p)){
+        return _isPrime[p];
+    }
+
+    if (p < 2){
+        return false;
+    }
+
+    getPrimes(p);
+
+    return _isPrime[p];
+
+}
+module.exports = { getPrimes, isPrime };
