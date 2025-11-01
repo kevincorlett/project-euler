@@ -98,7 +98,13 @@ function getDigitsB(num){
  * @returns {Number} Number created from the array of digits, reversed
  */
 function concatDigits(digits){
-    return Number(concatDigitsB(digits.map(x => BigInt(x))));
+    let result = 0;
+    let mul = 1;
+    for(d of digits){
+        result += mul*d;
+        mul*=10;
+    }
+    return result;
 }
 
 /**
